@@ -1,14 +1,46 @@
-let elRes = document.querySelector(".head");
-let elForm = document.querySelector(".form");
-let elInput = document.querySelector(".inputArr");
-let elFirst = document.querySelector(".toFirst");
-let elLast = document.querySelector(".toLast");
-let elBtn = document.querySelector(".btn");
-let array = ["Hyundai", "BMW", "C10", "RANGE-ROVER", "Aston Martin", "Nissan"];
+//* Selected selectors
+var elForm = document.querySelector(".form");
+var elArr = document.querySelector(".arr");
+var elInput1 = document.querySelector(".input1");
+var elInput2 = document.querySelector(".input2");
+var elStartBtn = document.querySelector(".st-btn");
+var elEndBtn = document.querySelector(".end-btn");
 
-elRes.textContent = array;
+//* Car names
+var cars = ["KIA", " Tesla", " McLaren", " Ferrari", " Lamborghini"];
 
-elFirst.addEventListener("click", function (evt) {
+cars.length === 0
+  ? (elArr.textContent = "Mashinalar tugadi:(")
+  : (elArr.textContent = cars);
+elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  array.shift(elInput.value);
+
+  elArr.textContent = cars;
+
+  if (elInput1.value !== "") {
+    cars.unshift(elInput1.value);
+  }
+  if (elInput2.value !== "") {
+    cars.push(elInput2.value);
+    return;
+  }
+});
+
+//* Thats
+elStartBtn.addEventListener("click", function (evt) {
+  evt.preventDefault();
+
+  cars.shift();
+
+  elArr.textContent = cars;
+  return;
+});
+
+elEndBtn.addEventListener("click", function (evt) {
+  evt.preventDefault();
+
+  cars.pop();
+
+  elArr.textContent = cars;
+  return;
 });
